@@ -1,0 +1,25 @@
+﻿@{
+  
+var db = Database.Open("Misc"); 
+var selectQueryString = "SELECT * FROM Miscs ORDER BY Cost"; 
+}
+<html> 
+    <body> 
+<h1>Fuel the Apitite with These...</h1> 
+<table> 
+<tr>
+<th>Name</th> 
+<th>Price</th> 
+</tr>
+@foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td align="left">@row.Name</td> 
+<td align="right">@row.Cost</td> 
+</tr> 
+}
+</table> 
+        <br>
+        <br><br>
+</body> 
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+<form action="" method="post">
+ID: <input type="number" name="Id">
+Email: <input type="text" name="email">
+Order Status: <input type="text" name="OrderStat">
+<input type="submit">
+</form>
+    </body>
+</html>
+
+    @{
+        if(IsPost)
+        {
+            var Id= Request.Form["Id"];
+            var email =Request.Form["email"];
+            var OrderStat= Request.Form["OrderStat"];
+            var db= Database.Open("Order");
+            var selectQueryString = "SELECT * FROM Orders ORDER BY Id";
+            foreach(var row in db.Query(selectQueryString))
+            {
+                if (row.Email == email)
+                {
+                    db.Execute("UPDATE Orders OrderStat= @0 WHERE Id= @1 AND Email = @2", OrderStat, Id, email );
+                }
+            }
+        }
+
+    }
+
