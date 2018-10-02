@@ -1,3 +1,7 @@
+p.center {
+    text-align: center;
+    color: red;
+}
 h1
 {
 border-bottom: 3px solid #cc9900;
